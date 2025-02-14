@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MK Stalen Deuren - Kalkulator wyceny</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f4f4f4; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        .calculator { margin-top: 20px; padding: 20px; border: 1px solid #000; border-radius: 10px; background: #fff; }
+        label, select, input { display: block; width: 100%; margin-bottom: 10px; padding: 5px; }
+        button { padding: 10px 15px; background: black; color: white; border: none; cursor: pointer; }
+        .result { font-size: 1.5em; font-weight: bold; margin-top: 20px; }
+        .contact { margin-top: 30px; padding: 20px; background: #eaeaea; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MK Stalen Deuren</h1>
+        <p>Specjalizujemy się w produkcji stalowych drzwi na wymiar. Skorzystaj z kalkulatora, aby poznać wstępną wycenę.</p>
+
+        <div class="calculator">
+            <h2>Kalkulator wyceny stalowych drzwi</h2>
+            <label for="width">Szerokość (mm):</label>
+            <input type="number" id="width" min="800" max="1500" value="1000">
+
+            <label for="height">Wysokość (mm):</label>
+            <input type="number" id="height" min="2000" max="3000" value="2100">
+
+            <button onclick="calculatePrice()">Oblicz cenę</button>
+            <div class="result" id="priceResult">Cena: -</div>
+        </div>
+
+        <div class="contact">
+            <h2>Kontakt</h2>
+            <p>Masz pytania? Skontaktuj się z nami!</p>
+            <p>Email: <a href="mailto:info@mkstalendeuren.nl">info@mkstalendeuren.nl</a></p>
+            <p>Telefon: +31 123 456 789</p>
+        </div>
+    </div>
+
+    <script>
+        function calculatePrice() {
+            let width = parseFloat(document.getElementById('width').value);
+            let height = parseFloat(document.getElementById('height').value);
+            
+            let pricePerSqMeter = 700; // Cena za m²
+            let area = (width * height) / 1000000; // powierzchnia w m²
+            let price = area * pricePerSqMeter;
+            
+            document.getElementById('priceResult').innerText = 'Cena: ' + price.toFixed(2) + ' EUR';
+        }
+    </script>
+</body>
+</html>
